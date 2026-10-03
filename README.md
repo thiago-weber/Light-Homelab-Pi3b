@@ -1,4 +1,4 @@
-# Light Homelab Pi3b
+# Light Homelab Pi 3B+
 Repositório de Homelab leve para Raspberry Pi 3B+
 
 Este é um repositório leve montado com docker, utilizando serviços essenciais como Pi-hole, Tailscale, Portainer, Glances, Syncthing e organização de Homepage.
