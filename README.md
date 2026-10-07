@@ -147,7 +147,7 @@ Resumo para subir o ambiente:
 4. Criar os registros DNS locais:
 
 ```bash
-sudo docker exec pihole pihole-FTL --config dns.hosts '["IP_DO_PI home.home", "IP_DO_PI pihole.home"]'
+sudo docker exec pihole pihole-FTL --config dns.hosts '["seu-IP home.home", "seu-IP pihole.home"]'
 ```
 
 ## Limitações e próximos passos
@@ -168,4 +168,4 @@ sudo docker exec pihole pihole-FTL --config dns.hosts '["IP_DO_PI home.home", "I
 
 ## Licença
 
-[MIT](LICENSE) © 2026 Thiago Weber, exceto o `custom.css` (veja [Fontes](#Fontes)).
+[MIT](LICENSE) © 2026 Thiago Weber, exceto o `custom.css` (veja [Fontes](#fontes)).
