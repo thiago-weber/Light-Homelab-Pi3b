@@ -1,0 +1,31 @@
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+    cputemp: true
+    uptime: true
+    network: true
+    units: metric
+#    expanded: true
+
+#- search:
+#    provider: duckduckgo
+#    target: _blank_
+
+- datetime:
+    text_size: xl
+    locale: pt-BR
+    format:
+      dateStyle: short
+      timeStyle: short
+      hour12: true
+
+- openmeteo:
+#    label: 
+    latitude: "{{HOMEPAGE_VAR_LATITUDE}}"
+    longitude: "{{HOMEPAGE_VAR_LONGITUDE}}"
+    timezone: America/Sao_Paulo
+    units: metric
+    cache: 5
+    format:
+      maximumFractionDigits: 1

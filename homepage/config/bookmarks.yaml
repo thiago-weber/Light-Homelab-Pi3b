@@ -1,0 +1,73 @@
+- Work/Studies:
+    - Github:
+        - abbr: GH
+          icon: sh-github
+          href: https://github.com/thiago-weber
+    - Outlook:
+        - abbr: OL
+          icon: sh-microsoft-outlook-2013
+          href: https://outlook.com
+    - GMail:
+        - abbr: GM
+          icon: sh-gmail-cleaner
+          href: https://gmail.com
+    - Google Classroom:
+        - abbr: GC
+          icon: si-googleclassroom
+          href: https://classroom.google.com
+    - Obsidian:
+        - abbr: OD
+          icon: sh-obsidian
+          href: "obsidian://"
+
+- Social:
+    - Reddit:
+        - abbr: RE
+          icon: sh-reddit
+          href: https://reddit.com/
+    - Whatsapp:
+        - abbr: ZAP
+          icon: sh-whatsapp
+          href: "whatsapp://"
+    - Discord:
+        - abbr: DC
+          icon: sh-discord
+          href: "discord://"
+
+- Entertainment:
+    - YouTube:
+        - abbr: YT
+          icon: sh-youtube
+          href: https://youtube.com
+    - YouTube Music:
+        - abbr: YTM
+          icon: sh-planning-center-music-stand
+          href: https://music.youtube.com
+    - Twitch:
+        - abbr: Twt
+          icon: sh-twitch
+          href: https://twitch.tv/
+
+- Games:
+    - Backloggd:
+        - abbr: BLG
+          href: https://backloggd.com/
+          icon: sh-videogametrackarr-dark
+    - Steam:
+        - abbr: St
+          href: "steam://"
+          icon: sh-steam
+
+- Shopping:
+    - Amazon:
+        - abbr: AMZ
+          href: https://amazon.com
+          icon: sh-amazon
+    - GG Deals:
+        - abbr: GG
+          href: https://gg.deals
+          icon: mdi-cash-multiple
+    - Nuuvem:
+        - abbr: NUU
+          href: https://nuuvem.com
+          icon: sh-icloud

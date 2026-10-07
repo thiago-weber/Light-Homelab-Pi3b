@@ -1,0 +1,83 @@
+- Network:
+    - Pi-hole:
+        icon: sh-pi-hole
+        id: pihole-card
+        href: https://seu-IP:8443/admin
+        container: pihole
+        server: my-docker
+        description: DNS Server
+        widget:
+          type: pihole
+          url: http://seu-IP:8080
+          version: 6
+          key: "{{HOMEPAGE_VAR_PIHOLE_KEY}}"
+
+    - Tailscale:
+        icon: sh-tailscale
+        id: tailscale-card
+        container: tailscale
+        server: my-docker
+        href: https://console.tailscale.com/admin/machines
+        description: VPN
+        widget:
+          type: tailscale
+          deviceid: seu-device-id
+          key: "{{HOMEPAGE_VAR_TAILSCALE_KEY}}"
+
+- Administration:
+    - Portainer:
+        icon: sh-portainer
+        id: portainer-card
+        container: portainer
+        server: my-docker
+        href: https://seu-IP:9443
+        description: Containers
+
+    - Syncthing:
+        icon: si-syncthing
+        id: syncthing-card
+        container: syncthing
+        server: my-docker
+        href: https://seu-IP:8384
+        description: Note syncing
+
+- Calendar:
+    - Agenda:
+        id: agenda-card
+        icon: sh-google-calendar-light
+        href: https://calendar.google.com
+        widget:
+          type: calendar
+          firstDayInWeek: sunday
+          view: monthly
+          maxEvents: 10
+          showTime: true
+          integrations:
+           - type: ical
+             url: "{{HOMEPAGE_VAR_CALENDAR_URL}}"
+             name: "Google Calendar"
+
+    - Weather & Climate:
+        id: climate-card
+        icon: mdi-weather-partly-cloudy
+        widget:
+          type: customapi
+          url: "{{HOMEPAGE_VAR_WEATHER_URL}}"
+          refreshInterval: 3600000
+          mappings:
+            - field: forecast.forecastday[1].day.maxtemp_c
+              label: Amanhã
+              format: number
+              suffix: "°C"
+            - field: forecast.forecastday[2].day.maxtemp_c
+              label: Depois de amanhã
+              format: number
+              suffix: "°C"
+            - field: forecast.forecastday[3].day.maxtemp_c
+              label: +3 dias
+              format: number
+              suffix: "°C"
+            - field: forecast.forecastday[4].day.maxtemp_c
+              label: +4 dias
+              format: number
+              suffix: "°C"

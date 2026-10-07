@@ -1,0 +1,16 @@
+# Senhas
+.env
+
+# Backups e logs
+*.bak
+*.log
+logs/
+
+# Dados e chaves
+pihole/etc-pihole/
+tailscale/tailscale-state/
+syncthing/config/
+syncthing/data/
+
+# Imagens do homepage
+homepage/config/images/

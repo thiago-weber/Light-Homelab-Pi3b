@@ -1,0 +1,234 @@
+/* Baseado em https://www.reddit.com/r/selfhosted/comments/1renwpw/homepage_with_custom_css/ do usuário u/chronnz, e adaptado para este projeto. */
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.service-card,
+.bookmark-card,
+.group-header,
+div[id$="-card"],
+div[id$="-card"] > div,
+div [class*="rounded-lg"] {
+	border-radius: 25px !important;
+	overflow: hidden !important;
+	isolation: isolate !important;
+}
+
+#pihole-card, #homepage-card,
+#syncthing-card,
+#portainer-card, #agenda-card,
+#tailscale-card, #climate-card {
+	position: relative !important;
+	background-color: transparent !important;
+
+}
+
+#pihole-card::before,
+#homepage-card::before,
+#syncthing-card::before,
+#portainer-card::before,
+#agenda-card::before,
+#climate-card::before,
+#tailscale-card::before  {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	right: 2px;
+	bottom: 6px;
+	z-index: 0;
+	border-radius: 23px !important;
+	opacity: 0.35;
+}
+
+#pihole-card::before { background-color: #96060c !important; }
+#homepage-card::before { background-color: #0284c7 !important; }
+#syncthing-card::before { background-color: #0882c8 !important; }
+#portainer-card::before { background-color: #044463 !important; }
+#agenda-card::before { background-color: #e0c067 !important; }
+#tailscale-card::before { background-color: #04074a !important; }
+#climate-card::before { background-color: #78acff !important; }
+
+
+/* --- STATUS & PING BADGE POSITIONING --- */
+.service-card > div {
+    position: relative;
+    z-index: 1;
+}
+ 
+span[class*="status-"], 
+div[class*="status-"] {
+    position: absolute !important;
+    top: 10px !important;
+    right: 12px !important;
+    z-index: 10 !important;
+    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    padding: 2px 6px !important;
+}
+ 
+.service-tags {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 4px !important;
+    top: 10px !important;
+    right: 12px !important;
+    position: absolute !important;
+    z-index: 20 !important;
+}
+ 
+.service-ping .ping-status {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 2px 6px !important;
+    height: auto !important;
+    width: auto !important;
+    background-image: none !important;
+}
+ 
+.service-ping .ping-status div {
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    opacity: 1 !important;
+    line-height: 1.2 !important;
+}
+ 
+.service-ping .ping-status div[class*="text-emerald"],
+.service-ping .ping-status div[class*="text-rose"],
+.service-ping .ping-status div[class*="text-red"] {
+    filter: brightness(1.4) !important; 
+}
+
+
+/*--- Bookmarks Styling ---*/
+
+li.bookmark a {
+    border-radius: 25px !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    margin-bottom: 8px !important;
+    transition: all 0.2s ease-in-out !important;
+}
+ 
+li.bookmark .bookmark-icon {
+    border-radius: 0 !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+ 
+li.bookmark .bookmark-text {
+    border-radius: 0 !important;
+}
+ 
+.bookmark-name {
+    color: #d1d4c6 !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+}
+ 
+.bookmark-description {
+    color: #94a3b8 !important;
+    font-size: 0.0rem !important;
+}
+ 
+li.bookmark a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+ 
+li.bookmark a:hover .bookmark-name {
+    color: #ffffff !important;
+}
+
+/* --- SYSTEM MONITOR --- */
+.information-widget-resource div[style*="width"] {
+    background: linear-gradient(90deg, #428549 0%, #bcbf5a 40%, #026360 75%, #191154 100%) !important;
+    opacity: 0.50 !important;
+    border-radius: 10px !important;
+}
+ 
+.information-widget-resource:nth-of-type(1) svg { color: #4ade80 !important; } 
+.information-widget-resource:nth-of-type(2) svg { color: #22d3ee !important; }
+.information-widget-resource:nth-of-type(3) svg { color: #ef4444 !important; }
+.information-widget-resource:nth-of-type(4) svg { color: #3b82f6 !important; }
+.information-widget-resource:nth-of-type(5) svg { color: #ef4444 !important; } 
+.information-widget-resource:nth-of-type(6) svg { color: #0d026b !important; }
+
+/* --- GENERAL TYPOGRAPHY --- */
+.service-group-name, .bookmark-group-name {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    opacity: 0.70 !important;
+}
+ 
+.service-name, .service-description {
+    color: #ffffff !important; 
+    opacity: 0.70 !important;
+}
+
+/* Desktop and Tablet */
+@media (min-width: 768px) {
+    .widget-container,
+    .information-widget-logo {
+        background-color: rgba(58, 58, 58, 0.2) !important;
+        border-radius: 50px !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        height: 42px !important;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 16px !important;
+        margin-top: 10px !important;
+        box-shadow: none !important;
+    }
+}
+ 
+/* Mobile */
+@media (max-width: 767px) {
+    .widget-container,
+    .information-widget-logo {
+        background-color: rgba(58, 58, 58, 0.2) !important;
+        border-radius: 25px !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        height: auto !important;
+        min-height: 40px !important;
+        padding: 8px 12px !important;
+        margin: 5px 0 !important;
+        width: 100% !important;
+    }
+    .information-widget-inner {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+}
+
+/* Global Alignment for Widgets */
+.information-widget-logo img {
+    margin: 0 !important;
+    max-height: 24px !important;
+}
+ 
+.information-widget-resource,
+.widget-inner-text,
+.resource-icon {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+ 
+.information-widget-resource {
+    margin-right: 12px !important;
+}

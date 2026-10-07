@@ -1,0 +1,32 @@
+services:
+  samba:
+    image: ghcr.io/servercontainers/samba:latest
+    container_name: samba
+    restart: always
+    network_mode: host
+    cap_add:
+      - CAP_NET_ADMIN
+    environment:
+      AVAHI_NAME: 'Raspi-NAS'
+
+      SAMBA_CONF_LOG_LEVEL: 2
+
+      GROUP_family: 1000
+      ACCOUNT_raspi: "${SAMBA_PASSWORD}"
+      UID_raspi: 1001
+      GROUPS_raspi: family
+
+      SAMBA_GLOBAL_CONFIG_bind_SPACE_interfaces_SPACE_only: "yes"
+      SAMBA_GLOBAL_CONFIG_interfaces: "127.0.0.1 192.168.1.0/24"
+
+      SAMBA_VOLUME_CONFIG_Compartilhado:
+        [Compartilhado]
+          path = /shares/compartilhado
+          valid users = raspi
+          guest ok = no
+          browseable = yes
+          read only = no
+
+    volumes:
+      - /etc/avahi/services/:/external/avahi
+      - /media/compartilhado:/shares/compartilhado
