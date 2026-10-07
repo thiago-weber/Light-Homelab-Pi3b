@@ -13,16 +13,16 @@ Repositório de Homelab leve para Raspberry Pi 3B+ montado com Docker, utilizand
 > Isso é um projeto pessoal, e não um template; será necessário fazer ajustes para funcionar corretamente.
 
 ## Índice
-- [Contexto](#Contexto)
-- [Segurança](#Segurança)
-- [Arquitetura](#Arquitetura)
-- [Serviços](#Serviços)
-- [Decisões Técnicas](#Decisões-Técnicas)
-- [Problemas Resolvidos](#Problemas-Resolvidos)
-- [Estrutura e Instalação](#Estrutura-e-Instalação)
-- [Limitações e próximos passos](#Limitações-e-próximos-passos)
-- [Fontes](#Fontes)
-- [Licença](#Licença)
+- [Contexto](#contexto)
+- [Segurança](#segurança)
+- [Arquitetura](#arquitetura)
+- [Serviços](#serviços)
+- [Decisões Técnicas](#decisões-técnicas)
+- [Problemas Resolvidos](#problemas-resolvidos)
+- [Estrutura e Instalação](#estrutura-e-instalação)
+- [Limitações e próximos passos](#limitações-e-próximos-passos)
+- [Fontes](#fontes)
+- [Licença](#licença)
 
 ## Contexto
 O objetivo é ter, em um único Raspberry Pi 3B+, nomes locais (`home.home`, `pihole.home`), DNS com bloqueio de anúncios, um painel único, sincronização de notas, uma pasta compartilhada e acesso remoto sem abrir portas no roteador.
@@ -81,12 +81,12 @@ flowchart TB
 
 ```mermaid
     sequenceDiagram
-    autonumber
-    participant C as Cliente
-    box Raspberry Pi
-        participant P as Pi-hole
-        participant N as nginx
-        participant H as Homepage
+        autonumber
+        participant C as Cliente
+        box Raspberry Pi
+            participant P as Pi-hole
+            participant N as nginx
+            participant H as Homepage
     end
     C->>P: IP de home.home?
     P-->>C: IP do Pi
@@ -101,10 +101,10 @@ flowchart TB
 | Serviço  | Portas | Descrição | Rede | Acesso |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Pi-hole  | 53, 8080, 8443  | Bloqueador de anúncios e DNS local | host | `pihole.home` em nginx |
-| nginx  | 80  | Reverse proxy | bridge | N/A |
+| nginx  | 80  | Reverse proxy | bridge | `home.home` e `pihole.home` |
 | Homepage | 3000 | Dashboard de acesso e monitoramento | bridge | `home.home` |
 | Portainer | 9443 | Gestão do Docker | bridge | direto |
-| Tailscale | N/A | VPN para acesso remoto | bridge | cliente Tailscale |
+| Tailscale | nenhuma publicada | VPN para acesso remoto | bridge | cliente Tailscale |
 | Syncthing | 8384 | Sincronização contínua de arquivos | host | direto |
 | Samba | 137, 138, 139, 445 | Compartilhamento SMB | host | rede local |
 
@@ -126,6 +126,8 @@ flowchart TB
 | `home.home` não resolve, mas o DNS responde | A lista de registros locais estava vazia (`dns.hosts` retornava `[]`) | Criar os registros com `pihole-FTL --config dns.hosts` |
 | Widget com "API key is invalid" | O container não foi recriado depois de criar o `.env`, e o placeholder seguiu literal | `docker compose up -d --force-recreate`, conferindo com `printenv` |
 | HTTPS ativado na interface do Syncthing, mas o HTTP continuava respondendo | O `STGUIADDRESS`, definido na inicialização, sobrepõe a configuração da interface | `STGUIADDRESS=https://0.0.0.0:8384` no compose |
+
+O aprendizado principal: `healthy` indica que o processo do container responde, não que os clientes alcançam o serviço.
 
 ## Estrutura e instalação
 
