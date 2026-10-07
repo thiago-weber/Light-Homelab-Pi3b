@@ -142,7 +142,7 @@ Não são versionados: os arquivos `.env`, os dados do Pi-hole, do Tailscale e d
 Resumo para subir o ambiente:
 
 1. Copiar o `.env.example` para `.env` em `homepage/`, `pihole/` e `samba/` e preencher os valores.
-2. Substituir `seu-IP` pelo IP do Pi nos composes e YAMLs e ajustar a rede.
+2. Substituir `seu-IP` pelo IP do Pi nos composes e YAMLs, substituir "seu-device-id" pelo Device ID do Tailscale e ajustar a rede.
 3. Rodar `docker compose up -d` em cada pasta.
 4. Criar os registros DNS locais:
 
