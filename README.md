@@ -127,8 +127,6 @@ flowchart TB
 | Widget com "API key is invalid" | O container não foi recriado depois de criar o `.env`, e o placeholder seguiu literal | `docker compose up -d --force-recreate`, conferindo com `printenv` |
 | HTTPS ativado na interface do Syncthing, mas o HTTP continuava respondendo | O `STGUIADDRESS`, definido na inicialização, sobrepõe a configuração da interface | `STGUIADDRESS=https://0.0.0.0:8384` no compose |
 
-O aprendizado principal: `healthy` indica que o processo do container responde, não que os clientes alcançam o serviço.
-
 ## Estrutura e instalação
 
 Uma pasta por serviço, cada uma com o seu `docker-compose.yml`:
